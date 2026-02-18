@@ -42,6 +42,14 @@ const envConfig = {
     filesystem: {
       basePath: process.env.FILESYSTEM_BASE_PATH || '',
     },
+    r2: {
+      accountId: process.env.CDN_R2_ACCOUNT_ID || '',
+      accessKeyId: process.env.CDN_R2_ACCESS_KEY_ID || '',
+      secretAccessKey: process.env.CDN_R2_SECRET_ACCESS_KEY || '',
+      bucket: process.env.CDN_R2_BUCKET || '',
+      translationsPath: process.env.CDN_R2_TRANSLATIONS_PATH || 'translations',
+      endpoint: process.env.CDN_R2_ENDPOINT || '',
+    },
   },
 };
 export default envConfig;

@@ -26,3 +26,12 @@ BUNNY_TRANSLATIONS_PATH=translations
 ##FILE-SYSTEM
 FILESYSTEM_BASE_PATH=C:/temp/translations
 
+##CLOUDFLARE R2
+CDN_R2_ACCOUNT_ID=
+CDN_R2_ACCESS_KEY_ID=
+CDN_R2_SECRET_ACCESS_KEY=
+CDN_R2_BUCKET=
+CDN_R2_TRANSLATIONS_PATH=translations
+# optional: if empty, uses https://<ACCOUNT_ID>.r2.cloudflarestorage.com
+CDN_R2_ENDPOINT=
+
