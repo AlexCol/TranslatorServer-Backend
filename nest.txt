@@ -1,0 +1,105 @@
+//atualizar o node só baixar a nova versão pelo site
+https://nodejs.org/en/download
+
+//atualizar o npm
+npm -v
+npm install -g npm
+
+//instalar o Nest Cli de forma global
+npm i -g @nestjs/cli
+
+//iniciar projeto nestjs
+nest new <nome_pasta>
+ou
+nest new . //para criar na pasta que está
+
+nest new . --skip-git
+
+** --skip-git
+se não adicionar isso, ele inicia um repositório git ao criar um nest new
+
+posso criar o modulo 'na mão', ou usar o comando abaixo (ele vai criar a pasta também, tudo dentro do src)
+nest generate module <nome-modulo> --no-spec
+ex: nest generate module conceitos-automatico
+
+o mesmo vale pra controllers
+ex: nest generate controller conceitos-automatico
+
+--no-spec é pra não criar um arquivo de testes
+
+comandos podem ser resumidos (generate = g, controller = co, module = mo)
+
+crud completo: resource
+nest g resource pessoas
+
+/*para usar dotEnv*/
+--biblioteca do nest
+1.0: npm i --save @nestjs/config
+1.1: import { ConfigModule } from '@nestjs/config';
+1.2: ConfigModule.forRoot();
+1.3: usar.... ex: process.env.PORT
+
+--direto com dotenv
+2.0: npm install dotenv
+2.1: import 'dotenv/config';
+2.2: usar.... ex: process.env.PORT
+
+/*pacotes*/
+//pra usar ValidationPipe()
+npm i class-validator
+
+//para transformação de classe
+npm i class-transformer
+
+//para mapear tipos
+npm i @nestjs/mapped-types
+///////////////////////////////O pacote @nestjs/mapped-types é usado para criar tipos derivados de DTOs (Data Transfer Objects) no NestJS, principalmente para facilitar operações como atualização parcial (PartialType), herança de tipos (PickType, OmitType, etc.).
+///////////////////////////////Ele permite gerar novos tipos baseados em outros DTOs, sem precisar reescrever as propriedades, tornando o código mais limpo e reutilizável, especialmente em validações e controllers.
+
+//instalar typeorm
+npm i @nestjs/typeorm
+npm i typeorm
+
+//instalar Prisma
+npm install prisma --save-dev
+npm install @prisma/client
+pm install @nestjs/prisma
+
+//instalar pacote para usar postgrees
+npm i pg
+
+/*pra usar o Fastify no lugar do Express*/
+npm i @nestjs/platform-fastify fastify
+npm uninstall @nestjs/platform-express
+npm uninstall @types/express
+
+ajustar na main de:
+const app = await NestFactory.create(AppModule);
+para
+const app = await NestFactory.create(AppModule, new FastifyAdapter());
+
+/*usar .env -- configurado no modulo raiz (pasta 08_) com exemplo de uso no appModule e recadosModule*/
+npm i @nestjs/config
+
+//instalar modulo jwt
+npm i @nestjs/jwt
+--importado e usado no authModule
+
+//instalar multer (precisa ser com express)
+npm i --save-dev @types/multer
+
+//instalar o helmet
+npm i helmet
+
+// throttler - pra controlar Rate Limiting //https://docs.nestjs.com/security/rate-limiting
+npm i --save @nestjs/throttler
+
+// nodemailer - para email (feito no projeto de email, criado o modulo, e consumido na criação de recados)
+npm i nodemailer
+npm i --save-dev @types/nodemailer
+
+// swagger (main.ts na 14_swagger)
+npm i @nestjs/swagger
+npm i swagger-ui-express
+obs: se quiser usar com Fastify, precisa tbm instalar: npm install --save @fastify/static
+obs: para ler os dtos, adicionar em nest-cli.json a parte de plugins

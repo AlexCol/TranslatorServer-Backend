@@ -1,0 +1,23 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: translator-backend
+    ports:
+      - '3000:3000'
+    env_file:
+      - .env
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      SQLITE_DB_PATH: /data/sqlite/app.db
+      FILESYSTEM_BASE_PATH: /data/translations
+    volumes:
+      - translator_sqlite:/data/sqlite
+      - translator_files:/data/translations
+    restart: unless-stopped
+
+volumes:
+  translator_sqlite:
+  translator_files:
