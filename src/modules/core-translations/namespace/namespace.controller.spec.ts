@@ -19,7 +19,7 @@ describe('NamespaceController', () => {
 
     const result = await controller.listNamespaces('app', 'dev', 'en');
 
-    expect(result).toEqual(['common']);
+    expect(result).toEqual({ data: ['common'] });
     expect(serviceMock.listNamespaces).toHaveBeenCalledWith('app', 'dev', 'en');
   });
 

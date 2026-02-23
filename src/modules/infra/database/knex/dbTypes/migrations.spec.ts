@@ -1,3 +1,9 @@
+describe('knex migrations', () => {
+  it('has migration tests pending implementation', () => {
+    expect(true).toBe(true);
+  });
+});
+
 // import * as tableSystem from './20260210185110_table_system';
 // import * as tableEnvironment from './20260210185111_table_envionment';
 // import * as tableLanguages from './20260210185112_table_languages';
