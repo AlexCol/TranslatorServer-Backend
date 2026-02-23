@@ -25,8 +25,9 @@ export class NamespaceController {
     @Param('system') system: string,
     @Param('environment') environment: string,
     @Param('language') language: string,
-  ) {
-    return this.namespaceService.listNamespaces(system, environment, language);
+  ): Promise<ArrayStringResponseDto> {
+    const data = await this.namespaceService.listNamespaces(system, environment, language);
+    return { data };
   }
 
   @ApiDoc({
