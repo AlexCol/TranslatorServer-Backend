@@ -3,6 +3,7 @@ import { SystemDto } from './dto/system.dto';
 import { SystemService } from './system.service';
 import { ArrayStringResponseDto } from '@/common/dto/ArrayStringResponse.dto';
 import { ApiDoc } from '@/decorators/api-doc/api-doc';
+import { IsPublic } from '@/modules/auth/authentication/decorators/isPublic';
 
 @Controller('system')
 export class SystemController {
@@ -13,6 +14,7 @@ export class SystemController {
     description: 'Returns a list of all systems with their details.',
     response: ArrayStringResponseDto,
   })
+  @IsPublic()
   @Get()
   async getSystemInfo(): Promise<ArrayStringResponseDto> {
     const response = await this.systemService.listSystems();

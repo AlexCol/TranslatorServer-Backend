@@ -3,6 +3,7 @@ import { EnvironmentDto } from './dto/environment.dto';
 import { EnvironmentService } from './environment.service';
 import { ArrayStringResponseDto } from '@/common/dto/ArrayStringResponse.dto';
 import { ApiDoc } from '@/decorators/api-doc/api-doc';
+import { IsPublic } from '@/modules/auth/authentication/decorators/isPublic';
 
 @Controller('environment')
 export class EnvironmentController {
@@ -14,6 +15,7 @@ export class EnvironmentController {
     params: [{ name: 'system', required: true, description: 'The system name' }],
     response: ArrayStringResponseDto,
   })
+  @IsPublic()
   @Get(':system')
   async getSystemInfo(@Param('system') system: string): Promise<ArrayStringResponseDto> {
     const response = await this.environmentService.listEnvironments(system);

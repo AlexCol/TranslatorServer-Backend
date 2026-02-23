@@ -4,6 +4,7 @@ import { LanguageService } from './language.service';
 import { ArrayStringResponseDto } from '@/common/dto/ArrayStringResponse.dto';
 import { StringResponseDto } from '@/common/dto/MessageResponseDto';
 import { ApiDoc } from '@/decorators/api-doc/api-doc';
+import { IsPublic } from '@/modules/auth/authentication/decorators/isPublic';
 
 const paramsDescription = {
   system: 'The name of the system to retrieve languages for',
@@ -23,6 +24,7 @@ export class LanguageController {
     ],
     response: ArrayStringResponseDto,
   })
+  @IsPublic()
   @Get(':system/:environment')
   async getSystemInfo(
     @Param('system') system: string,

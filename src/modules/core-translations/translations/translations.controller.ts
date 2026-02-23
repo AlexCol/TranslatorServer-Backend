@@ -4,6 +4,7 @@ import { CreateTranslationDto } from './dto/create-tranlantion-key.dto';
 import { TranslationStatusDto } from './dto/translation-status.dto';
 import { TranslationsService } from './translations.service';
 import { ApiDoc } from '@/decorators/api-doc/api-doc';
+import { IsPublic } from '@/modules/auth/authentication/decorators/isPublic';
 
 const paramsDescription = {
   system: 'The name of the system to retrieve languages for',
@@ -35,6 +36,7 @@ export class TranslationsController {
       },
     },
   })
+  @IsPublic()
   @Get(':system/:environment/:language/:namespace')
   async loadWithFallBack(
     @Param('system') system: string,
@@ -64,6 +66,7 @@ export class TranslationsController {
       },
     },
   })
+  @IsPublic()
   @Get(':system/:environment/:language/:namespace/clean')
   async loadWithoutFallBack(
     @Param('system') system: string,

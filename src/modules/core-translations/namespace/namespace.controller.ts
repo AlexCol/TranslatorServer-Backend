@@ -3,6 +3,7 @@ import { NamespaceDto } from './dto/namespace.dto';
 import { NamespaceService } from './namespace.service';
 import { ArrayStringResponseDto } from '@/common/dto/ArrayStringResponse.dto';
 import { ApiDoc } from '@/decorators/api-doc/api-doc';
+import { IsPublic } from '@/modules/auth/authentication/decorators/isPublic';
 
 @Controller('namespaces')
 export class NamespaceController {
@@ -18,6 +19,7 @@ export class NamespaceController {
     ],
     response: ArrayStringResponseDto,
   })
+  @IsPublic()
   @Get(':system/:environment/:language')
   async listNamespaces(
     @Param('system') system: string,
